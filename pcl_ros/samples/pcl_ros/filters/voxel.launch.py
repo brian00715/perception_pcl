@@ -44,7 +44,8 @@ def generate_launch_description():
                 'filter_field_name': '',
                 'leaf_size': LaunchConfiguration('leaf_size')
             }],
-            remappings=[('input', 'points')]
+            remappings=[('input', '/camera/depth/color/points')]
+            # remappings=[('input', 'points')]
         ),
 
         # RViz node
@@ -52,10 +53,7 @@ def generate_launch_description():
             package='rviz2',
             executable='rviz2',
             name='rviz',
-            # arguments=['-d', get_package_share_directory('pcl_ros') + '/samples/pcl_ros/filters/config/voxel_grid.rviz'],
+            arguments=['-d', get_package_share_directory('pcl_ros') + '/samples/pcl_ros/filters/config/default.rviz'],
             condition=IfCondition(LaunchConfiguration('gui'))
         ),
-
-        # 注意：ROS2的测试框架需要单独配置，这里需要根据实际测试需求进行调整
-        # ROS2的launch测试框架与ROS1不同，建议使用launch_testing框架创建单独的测试文件
     ])

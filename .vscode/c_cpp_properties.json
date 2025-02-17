@@ -4,7 +4,8 @@
             "name": "ROS2",
             "includePath": [
                 "${workspaceFolder}/**",
-                "/opt/ros/foxy/include/**"
+                "/opt/ros/foxy/include/**",
+                "/usr/include/**",
             ],
             "defines": [],
             "compilerPath": "/usr/bin/gcc",

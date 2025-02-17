@@ -40,10 +40,10 @@
 #include <pcl/common/transforms.h>
 #include <pcl/point_types.h>
 #include <pcl_conversions/pcl_conversions.h>
-#include <tf2/convert.hpp>
-#include <tf2/exceptions.hpp>
-#include <tf2/LinearMath/Transform.hpp>
-#include <tf2/LinearMath/Vector3.hpp>
+#include <tf2/convert.h>
+#include <tf2/exceptions.h>
+#include <tf2/LinearMath/Transform.h>
+#include <tf2/LinearMath/Vector3.h>
 #include <tf2_ros/buffer.h>
 #include <tf2_ros/transform_listener.h>
 
@@ -52,9 +52,9 @@
 #include <limits>
 #include <string>
 
-#include <tf2_geometry_msgs/tf2_geometry_msgs.hpp>
-#include <sensor_msgs/msg/point_cloud2.hpp>
-#include <geometry_msgs/msg/transform_stamped.hpp>
+#include <tf2_geometry_msgs/tf2_geometry_msgs.h>
+#include <sensor_msgs/msg/point_cloud2.h>
+#include <geometry_msgs/msg/transform_stamped.h>
 #include <rclcpp/logging.hpp>
 #include <rclcpp/time.hpp>
 

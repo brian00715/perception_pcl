@@ -159,6 +159,8 @@ private:
     const PointCloud2::ConstSharedPtr & cloud,
     const PointIndices::ConstSharedPtr & indices);
 
+  rclcpp::TimerBase::SharedPtr timer_;
+
 public:
   EIGEN_MAKE_ALIGNED_OPERATOR_NEW
 };

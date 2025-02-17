@@ -43,7 +43,8 @@ pcl_ros::ProjectInliers::ProjectInliers(const rclcpp::NodeOptions & options)
 {
   // ---[ Mandatory parameters
   // The type of model to use (user given parameter).
-  declare_parameter("model_type", rclcpp::ParameterType::PARAMETER_INTEGER,true);
+  // declare_parameter("model_type", rclcpp::ParameterType::PARAMETER_INTEGER);
+  declare_parameter("model_type", 0); // FIXME
   int model_type;
   if (!get_parameter("model_type", model_type)) {
     RCLCPP_ERROR(

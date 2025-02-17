@@ -180,11 +180,36 @@ pcl_ros::Filter::Filter(std::string node_name, const rclcpp::NodeOptions & optio
 }
 
 //////////////////////////////////////////////////////////////////////////////////////////////
-void
-pcl_ros::Filter::createPublishers()
+// void
+// pcl_ros::Filter::createPublishers()
+// {
+//   auto pub_options = rclcpp::PublisherOptions();
+//   pub_options.event_callbacks.matched_callback = [this](rclcpp::MatchedInfo & /*info*/) {
+//       if (pub_output_->get_subscription_count() == 0) {
+//         unsubscribe();
+//       } else {
+//         if (use_indices_) {
+//           if (!sub_input_filter_.getSubscriber() || !sub_indices_filter_.getSubscriber()) {
+//             subscribe();
+//           }
+//         } else {
+//           if (!sub_input_) {
+//             subscribe();
+//           }
+//         }
+//       }
+//     };
+//   pub_output_ = create_publisher<PointCloud2>("output", max_queue_size_, pub_options);
+// }
+void pcl_ros::Filter::createPublishers()
 {
-  auto pub_options = rclcpp::PublisherOptions();
-  pub_options.event_callbacks.matched_callback = [this](rclcpp::MatchedInfo & /*info*/) {
+  // 创建发布者时不使用 matched_callback
+  pub_output_ = create_publisher<PointCloud2>("output", max_queue_size_);
+
+  // 创建定时器定期检查订阅数
+  timer_ = this->create_wall_timer(
+    std::chrono::seconds(1),  // 间隔时间可根据需要调整
+    [this]() {
       if (pub_output_->get_subscription_count() == 0) {
         unsubscribe();
       } else {
@@ -198,8 +223,8 @@ pcl_ros::Filter::createPublishers()
           }
         }
       }
-    };
-  pub_output_ = create_publisher<PointCloud2>("output", max_queue_size_, pub_options);
+    }
+  );
 }
 
 //////////////////////////////////////////////////////////////////////////////////////////////

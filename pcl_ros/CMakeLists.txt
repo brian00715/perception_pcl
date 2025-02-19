@@ -246,7 +246,7 @@ install(
   LIBRARY DESTINATION lib
 )
 
-install(DIRECTORY plugins samples
+install(DIRECTORY plugins samples launch
   DESTINATION share/${PROJECT_NAME})
 
 # Export old-style CMake variables
